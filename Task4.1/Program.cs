@@ -60,8 +60,7 @@ namespace Task4._1
                 index++;
             }
         }
-
-
+        
         static void ReplacePlaceInArray(ref string[] fullName, ref string[] job, int index)
         {
             for (int i = 0; i < fullName.Length - 1; i++)
@@ -72,6 +71,7 @@ namespace Task4._1
                     job[i] = job[i + 1];
                 }
             }
+            
             Array.Resize(ref fullName, fullName.Length - 1);
             Array.Resize(ref job, job.Length - 1);
         }
