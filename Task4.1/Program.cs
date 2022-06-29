@@ -60,6 +60,13 @@ namespace Task4._1
                 index++;
             }
         }
+        
+        static void ReduceArray(ref string[] fullName, ref string[] job)
+        {
+
+            Array.Resize(ref fullName, fullName.Length - 1);
+            Array.Resize(ref job, job.Length - 1);
+        }
 
         static void DeleteFile(ref string[] fullName, ref string[] job, int index)
         {
@@ -77,13 +84,11 @@ namespace Task4._1
                     {
                         fullName[i] = fullName[i + 1];
                         job[i] = job[i + 1];
-                        Array.Resize(ref fullName, fullName.Length - 1);
-                        Array.Resize(ref job, job.Length - 1);
+                        ReduceArray(ref fullName, ref job);
                     }
                     else
                     {
-                        Array.Resize(ref fullName, fullName.Length - 1);
-                        Array.Resize(ref job, job.Length - 1);
+                        ReduceArray(ref fullName, ref job);
                     }
 
                     Console.WriteLine("Досье успешно удаленно!");
