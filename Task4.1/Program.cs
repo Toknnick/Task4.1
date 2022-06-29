@@ -72,7 +72,7 @@ namespace Task4._1
             Console.WriteLine("Введите номер досье по индексу:");
             index = int.Parse(Console.ReadLine()) - 1;
 
-            for (int i = 0; i < fullName.Length + 1; i++)
+           for (int i = 0; i < fullName.Length + 1; i++)
             {
                 if (index == i)
                 {
@@ -83,13 +83,9 @@ namespace Task4._1
                     {
                         fullName[i] = fullName[i + 1];
                         job[i] = job[i + 1];
-                        ReduceArray(ref fullName, ref job);
-                    }
-                    else
-                    {
-                        ReduceArray(ref fullName, ref job);
                     }
 
+                    ReduceArray(ref fullName, ref job);
                     Console.WriteLine("Досье успешно удаленно!");
                 }
                 else if (index > fullName.Length)
