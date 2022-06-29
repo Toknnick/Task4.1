@@ -24,7 +24,7 @@ namespace Task4._1
                         number++;
                         break;
                     case 2:
-                        ViewFile(fullName,job, index);
+                        ViewFile(fullName, job, index);
                         break;
                     case 3:
                         DeleteFile(ref fullName, ref job, index);
@@ -52,7 +52,7 @@ namespace Task4._1
             job[number] = Console.ReadLine();
         }
 
-        static void ViewFile(string[] fullName,string[] job, int index)
+        static void ViewFile(string[] fullName, string[] job, int index)
         {
             for (int i = 0; i < fullName.Length; i++)
             {
@@ -60,10 +60,26 @@ namespace Task4._1
                 index++;
             }
         }
-        
-        static void ReduceArray(ref string[] fullName, ref string[] job)
+
+        static void ReplacePlaceInFullName(ref string[] fullName, int index)
         {
+            for (int i = 0; i < fullName.Length - 1; i++)
+            {
+                if (index == i && index < fullName.Length)
+                    fullName[i] = fullName[i + 1];
+            }
+
             Array.Resize(ref fullName, fullName.Length - 1);
+        }
+
+        static void ReplacePlaceInJob(ref string[] job, int index)
+        {
+            for (int i = 0; i < job.Length - 1; i++)
+            {
+                if (index == i && index < job.Length)
+                    job[i] = job[i + 1];
+            }
+
             Array.Resize(ref job, job.Length - 1);
         }
 
@@ -71,21 +87,13 @@ namespace Task4._1
         {
             Console.WriteLine("Введите номер досье по индексу:");
             index = int.Parse(Console.ReadLine()) - 1;
+            Console.WriteLine("Досье успешно удаленно!");
+            ReplacePlaceInFullName(ref fullName, index);
+            ReplacePlaceInJob(ref job, index);
 
-            for (int i = 0; i < fullName.Length + 1; i++)
+            if (index > fullName.Length)
             {
-                if (index == i)
-                {
-                    fullName[i] = fullName[i + 1];
-                    job[i] = job[i + 1];
-                    ReduceArray(ref fullName, ref job);
-                    Console.WriteLine("Досье успешно удаленно!");
-                }
-                else if (index > fullName.Length)
-                {
-                    Console.WriteLine("Такого досье нет!");
-                    break;
-                }
+                Console.WriteLine("Такого досье нет!");
             }
         }
 
@@ -104,3 +112,4 @@ namespace Task4._1
             }
         }
     }
+}
