@@ -24,7 +24,7 @@ namespace Task4._1
                         number++;
                         break;
                     case 2:
-                        ViewFile(ref fullName, ref job, index);
+                        ViewFile(fullName,job, index);
                         break;
                     case 3:
                         DeleteFile(ref fullName, ref job, index);
@@ -52,7 +52,7 @@ namespace Task4._1
             job[number] = Console.ReadLine();
         }
 
-        static void ViewFile(ref string[] fullName, ref string[] job, int index)
+        static void ViewFile(string[] fullName,string[] job, int index)
         {
             for (int i = 0; i < fullName.Length; i++)
             {
@@ -72,19 +72,12 @@ namespace Task4._1
             Console.WriteLine("Введите номер досье по индексу:");
             index = int.Parse(Console.ReadLine()) - 1;
 
-           for (int i = 0; i < fullName.Length + 1; i++)
+            for (int i = 0; i < fullName.Length + 1; i++)
             {
                 if (index == i)
                 {
-                    fullName[i] = null;
-                    job[i] = null;
-
-                    if (index < fullName.Length - 1)
-                    {
-                        fullName[i] = fullName[i + 1];
-                        job[i] = job[i + 1];
-                    }
-
+                    fullName[i] = fullName[i + 1];
+                    job[i] = job[i + 1];
                     ReduceArray(ref fullName, ref job);
                     Console.WriteLine("Досье успешно удаленно!");
                 }
