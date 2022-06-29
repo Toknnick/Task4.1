@@ -61,35 +61,28 @@ namespace Task4._1
             }
         }
 
-        static void ReplacePlaceInFullName(ref string[] fullName, int index)
+
+        static void ReplacePlaceInArray(ref string[] fullName, ref string[] job, int index)
         {
             for (int i = 0; i < fullName.Length - 1; i++)
             {
                 if (index == i && index < fullName.Length)
+                {
                     fullName[i] = fullName[i + 1];
-            }
-
-            Array.Resize(ref fullName, fullName.Length - 1);
-        }
-
-        static void ReplacePlaceInJob(ref string[] job, int index)
-        {
-            for (int i = 0; i < job.Length - 1; i++)
-            {
-                if (index == i && index < job.Length)
                     job[i] = job[i + 1];
+                }
             }
-
+            Array.Resize(ref fullName, fullName.Length - 1);
             Array.Resize(ref job, job.Length - 1);
         }
+
 
         static void DeleteFile(ref string[] fullName, ref string[] job, int index)
         {
             Console.WriteLine("Введите номер досье по индексу:");
             index = int.Parse(Console.ReadLine()) - 1;
+            ReplacePlaceInArray(ref fullName, ref job, index);
             Console.WriteLine("Досье успешно удаленно!");
-            ReplacePlaceInFullName(ref fullName, index);
-            ReplacePlaceInJob(ref job, index);
 
             if (index > fullName.Length)
             {
