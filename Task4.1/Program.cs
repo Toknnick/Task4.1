@@ -63,7 +63,6 @@ namespace Task4._1
         
         static void ReduceArray(ref string[] fullName, ref string[] job)
         {
-
             Array.Resize(ref fullName, fullName.Length - 1);
             Array.Resize(ref job, job.Length - 1);
         }
