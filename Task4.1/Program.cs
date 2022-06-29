@@ -60,20 +60,24 @@ namespace Task4._1
                 index++;
             }
         }
-        
-        static void ReplacePlaceInArray(ref string[] fullName, ref string[] job, int index)
+
+        static void ReplacePlaceInArray(ref string[] someArray, int index)
         {
-            for (int i = 0; i < fullName.Length - 1; i++)
+            bool isWork = true;
+                
+            while (isWork)
             {
-                if (index == i && index < fullName.Length)
+                for (int i = 0; i < someArray.Length - 1; i++)
                 {
-                    fullName[i] = fullName[i + 1];
-                    job[i] = job[i + 1];
+                    if (index == i && index < someArray.Length)
+                    {
+                        someArray[i] = someArray[i + 1];
+                    }
                 }
+
+                Array.Resize(ref someArray, someArray.Length - 1);
+                isWork = false;
             }
-            
-            Array.Resize(ref fullName, fullName.Length - 1);
-            Array.Resize(ref job, job.Length - 1);
         }
 
 
@@ -81,7 +85,8 @@ namespace Task4._1
         {
             Console.WriteLine("Введите номер досье по индексу:");
             index = int.Parse(Console.ReadLine()) - 1;
-            ReplacePlaceInArray(ref fullName, ref job, index);
+            ReplacePlaceInArray(ref fullName, index);
+            ReplacePlaceInArray(ref job, index);
             Console.WriteLine("Досье успешно удаленно!");
 
             if (index > fullName.Length)
